@@ -1,0 +1,21 @@
+import whois
+
+def recherche_informations_whois(domaine):
+    try:
+        informations = whois.whois(domaine)
+        print("Informations WHOIS pour le domaine", domaine)
+        print("--------------------------------------")
+        print("Domaine :", informations.domain_name)
+        print("Propriétaire :", informations.owner)
+        print("Organisation :", informations.organization)
+        print("Adresse :", informations.address)
+        print("Ville :", informations.city)
+        print("Pays :", informations.country)
+        print("Serveurs DNS :", informations.name_servers)
+        print("--------------------------------------")
+    except whois.parser.PywhoisError as e:
+        print("Une erreur s'est produite lors de la recherche WHOIS :", str(e))
+
+# Exemple d'utilisation
+domaine = input("Entrez le nom de domaine : ")
+recherche_informations_whois(domaine)
